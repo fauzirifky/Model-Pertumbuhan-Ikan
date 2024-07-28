@@ -14,7 +14,7 @@ db_host = st.secrets["database"]["DB_HOST"]
 db_user = st.secrets["database"]["DB_USER"]
 db_password = st.secrets["database"]["DB_PASSWORD"]
 db_name = st.secrets["database"]["DB_NAME"]
-
+#
 
 connection = pymysql.connect(
     host=db_host,
