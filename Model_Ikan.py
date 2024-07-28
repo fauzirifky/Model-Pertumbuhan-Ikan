@@ -5,15 +5,22 @@ from scipy.optimize import curve_fit
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 import pymysql
+import os
 
 
 
 # Connect to the database
 # Accessing secrets
-db_host = st.secrets["database"]["DB_HOST"]
-db_user = st.secrets["database"]["DB_USER"]
-db_password = st.secrets["database"]["DB_PASSWORD"]
-db_name = st.secrets["database"]["DB_NAME"]
+try:
+    db_host = os.getenv('DB_HOST')
+    db_user = os.getenv('DB_USER')
+    db_password = os.getenv('DB_PASSWORD')
+    db_name = os.getenv('DB_NAME')
+except:
+    db_host = st.secrets["database"]["DB_HOST"]
+    db_user = st.secrets["database"]["DB_USER"]
+    db_password = st.secrets["database"]["DB_PASSWORD"]
+    db_name = st.secrets["database"]["DB_NAME"]
 #
 
 connection = pymysql.connect(
